@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Message Info</h1>
+<ul>
+  <li>Message Content: {{ message.message_content }}</li>
+</ul>
+<div>
+  <a href="#">Display User Messages</a>
+</div>
+<div>
+  <a href="#">Return Home</a>
+</div>
+<div>
+  <form action="{{ url_for('destroy_message', msg_id=message.id)}}?_method=DELETE" method="POST">
+    <button type='submit'>Delete this message!</button>
+  </form>
+</div>
+{% endblock %}
