@@ -1,0 +1,11 @@
+#content {
+  padding: 10px;
+}
+
+#new_user_form {
+  max-width: 600px;
+}
+
+#new_user_home_button {
+  display: inline-block;
+}

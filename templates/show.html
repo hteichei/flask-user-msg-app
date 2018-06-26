@@ -1,22 +1,32 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "base.html" %} {% block content %}
 <h1>User Info</h1>
-<ol>
-  <li>First Name: {{ user.first_name }}</li>
-  <li>Last name: {{ user.last_name }}</li>
-</ol>
-<div>
-  <a href="{{ url_for('message_index', user_id=user.id) }}">Display User Messages</a>
+<div class='card'>
+  <div class='card-body'>
+    <p class='card-text'>
+      <strong>First Name:</strong> {{ user.first_name }}</p>
+    <p class='card-text'>
+      <strong>Last name:</strong> {{ user.last_name }}</p>
+
+    <form action="{{ url_for('destroy', user_id=user.id)}}?_method=DELETE" method="POST">
+      <button class="btn btn-primary" type='submit'>Delete this user</button>
+    </form>
+    <div>
+      <p></p>
+    </div>
+    <div aria-label="Basic example">
+      <a href="{{ url_for('message_index', user_id=user.id) }}">
+        <button type="button" class="btn btn-secondary">User Messages</button>
+      </a>
+      <span></span>
+      <a href="{{ url_for('index') }}">
+        <button type="button" class="btn btn-secondary">Home</button>
+      </a>
+      <span></span>
+      <a href="{{ url_for('edit', user_id=user.id) }}">
+        <button type="button" class="btn btn-secondary">Edit User Profile</button>
+      </a>
+    </div>
+  </div>
 </div>
-<div>
-  <a href="{{ url_for('index') }}">Return Home</a>
-</div>
-<div>
-<div>
-  <a href="{{ url_for('edit', user_id=user.id) }}">Edit User Profile</a>
-</div>
-<form action="{{ url_for('destroy', user_id=user.id)}}?_method=DELETE" method="POST">
-    <button type='submit'>Delete this user</button>
-</form>
-</div>
+
 {% endblock %}

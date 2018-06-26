@@ -1,0 +1,22 @@
+{% extends "base.html" %} {% block content %} 
+<div class="card">
+    <div class="card-header">
+      <h1>TAGS!</h1>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Exquisite tags</h5>
+      <div class="card-text">
+        <ol>
+          {% for tags in tag_list %}
+          <li>
+            <a href="#">{{ tags.tag_name }}</a>
+          </li>
+          {% endfor %}
+        </ol>
+      </div>
+      <a class="btn btn-primary" href="{{ url_for('tag_new') }}">Create New Tag</a>
+    </div>
+  </div>
+
+  {% endblock %}
+

@@ -1,15 +1,23 @@
-{% extends "base.html" %} {% block content %} 
-<h1>Messages!</h1>
-<ol>
-  {% for message in user.messages %}
-  <li><a href="{{ url_for('messages_show', msg_id=message.id) }}">{{ message.message_content }}</a>
-  </li>
-  {% endfor %}
-</ol>
-<div>
-  <a href="{{ url_for('messages_new', user_id=user.id) }}">Create New Message</a>
-</div>
-<div>
-  <a href="{{ url_for('show', user_id=user.id) }}">Return to User Profile</a>
+{% extends "base.html" %} {% block content %}
+
+<div class="card">
+  <div class="card-header">
+    <h1>User Messages!</h1>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Messages for {{ user.first_name }} {{ user.last_name }}</h5>
+    <div class="card-text">
+      <ol>
+        {% for message in user.messages %}
+        <li>
+          <a href="{{ url_for('messages_show', msg_id=message.id) }}">{{ message.message_content }}</a>
+        </li>
+        {% endfor %}
+      </ol>
+    </div>
+    <a href="{{ url_for('messages_new', user_id=user.id) }}" class="btn btn-primary">Create New Message</a>
+    <span></span>
+    <a href="{{ url_for('show', user_id=user.id) }}" class="btn btn-primary">Return to User Profile</a>
+  </div>
 </div>
 {% endblock %}

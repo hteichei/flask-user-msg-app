@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Edit Existing Tag</h1>
+<form action="{{ url_for('tags_update', tag_id=tag.id) }}?_method=PATCH" method="POST">
+    <div>
+        <label for="tag_name">New Tag Name:</label>
+          <input type="text" name='tag_name' id='tag_name'>
+      </div>
+      <div>
+          <button type='submit'>Update Tag</button>
+      </div>
+</form>
+<a href="{{ url_for('tag_show', tag_id=tag.id) }}">Return to Tag</a>
+{% endblock %}

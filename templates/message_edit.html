@@ -1,0 +1,21 @@
+{% extends "base.html" %} {% block content %}
+<h1>Edit Existing Message</h1>
+<form action="{{ url_for('messages_update', msg_id=msg.id) }}?_method=PATCH" method="POST">
+    <div>
+        <label for="message_content">New Message Content:</label>
+        <input type="text" name='message_content' id='message_content' value='{{ msg.message_content }}'>
+    </div>
+    <div>
+        <button type='submit'>Update Message</button>
+    </div>
+    <div>
+        <strong>Tags:</strong>
+        {% for tag in tag_list %}
+        <div>
+            <input name='tags' type='checkbox' id='new_tag' value="{{ tag.id }}">{{ tag.tag_name }}
+        </div>
+        {% endfor %}
+    </div>
+</form>
+<a href="{{ url_for('messages_show', msg_id=msg.id) }}">Return to Messages</a>
+{% endblock %}

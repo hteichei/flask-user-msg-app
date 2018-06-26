@@ -4,11 +4,19 @@
 <ul>
   <li>Message Content: {{ message.message_content }}</li>
 </ul>
+<h2>Tags:</h2>
+<ul>
+    {% for tag in message.tags %}
+    <li>
+      <a href="#">{{ tag.tag_name }}</a>
+    </li>
+    {% endfor %}
+</ul>
 <div>
-  <a href="#">Display User Messages</a>
+  <a href="{{ url_for('message_index', user_id=user_id) }}">Return to All User Messages</a>
 </div>
 <div>
-  <a href="#">Return Home</a>
+  <a href="{{ url_for('messages_edit', msg_id=message.id) }}">Edit Message</a>
 </div>
 <div>
   <form action="{{ url_for('destroy_message', msg_id=message.id)}}?_method=DELETE" method="POST">

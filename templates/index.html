@@ -1,11 +1,24 @@
-{% extends "base.html" %}
-{% block content %}
-USERS!
-<ol>
-    {% for user in user_list %}
-      <li><a href="{{ url_for('show', user_id=user.id) }}">{{ user.first_name }} {{ user.last_name }}</a></li>
-    {% endfor %}
-</ol>
+{% extends "base.html" %} {% block content %}
+<div>
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">USERS</h1>
+      <p class="lead">List of all users.</p>
+      <a class="btn btn-primary btn-lg" href="{{ url_for('add_user') }}" role="button">Create New User</a>
+    </div>
+  </div>
+  <div class='container'>
+      {% for user in user_list %}
+      <div class="card">
+        <h5 class="card-header">{{ user.first_name }} {{ user.last_name }}</h5>
+        <div class="card-body">
+          <h5 class="card-title">{{ user.first_name }} has {{ user.messages.count() }} messages</h5>
+          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          <a href="{{ url_for('show', user_id=user.id) }}" class="btn btn-primary">User Profile</a>
+        </div>
+      </div>
+      {% endfor %}
+  </div>
+</div>
 
-<a href="{{ url_for('add_user') }}">Create New User</a>
 {% endblock %}

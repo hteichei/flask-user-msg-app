@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Edit Existing User Profile</h1>
+<h1>Edit {{ user.first_name }} {{ user.last_name }}'s Profile</h1>
 <form action="{{ url_for('update', user_id=user.id) }}?_method=PATCH" method="POST">
   <div>
     <label for="first_name">First Name:</label>

@@ -7,6 +7,14 @@
       <input type="text" name='message_content' id='message_content'>
   </div>
   <div>
+    <strong>Tags:</strong>
+        {% for tag in tag_list %}
+        <div>
+      <input name='tags' type='checkbox' id='new_tag' value="{{ tag.id }}">{{ tag.tag_name }}
+      </div>
+        {% endfor %}
+  </div>
+  <div>
       <input type="submit">
   </div>
 </form>
